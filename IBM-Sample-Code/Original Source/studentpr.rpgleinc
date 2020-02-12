@@ -1,0 +1,48 @@
+     D H_OK            c                   const(200)
+     D H_CREATED       c                   const(201)
+     D H_NOCONTENT     c                   const(204)
+     D H_BADREQUEST    c                   const(400)
+     D H_NOTFOUND      c                   const(404)
+     D H_CONFLICT      c                   const(409)
+     D H_GONE          c                   const(410)
+     D H_SERVERERROR   c                   const(500)
+
+     D ERR_DUPLICATE_WRITE...
+     D                 C                   const(01021)
+
+     D studentRec      DS                  qualified template
+     D  studentID                     9A
+     D  firstName                    50A
+     D  lastName                     50A
+     D  gender                       10A
+
+     D openStudentF    PR            10i 0
+
+     D closeStudentF   PR            10i 0
+
+     D getAll          PR
+     D  students_...
+     D  LENGTH                       10i 0
+     D  students                           likeds(studentRec) dim(1000)
+     D                                     options(*varsize)
+     D  httpStatus                   10i 0
+     D  httpHeaders                 100a   dim(10)
+
+     D getByID         PR
+     D  studentID                     9a   const
+     D  student                            likeds(studentRec)
+     D  httpStatus                   10i 0
+     D  httpHeaders                 100a   dim(10)
+
+     D create          PR       
+     D  student                            likeds(studentRec)
+     D  httpStatus                   10i 0
+     D  httpHeaders                 100a   dim(10)
+
+     D update          PR       
+     D  student                            likeds(studentRec)
+     D  httpStatus                   10i 0
+
+     D remove          PR       
+     D  studentID                     9a   const
+     D  httpStatus                   10i 0
